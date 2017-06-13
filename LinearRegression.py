@@ -23,11 +23,11 @@ init = tf.global_variables_initializer()
 sess.run(init)
 
 for i in range(train_epoch):
-    index = np.random.choice(len(data),size = batch_size)
-    x_train = data_x[index], y_train = data_x[index]
+    index = np.random.choice(len(data_x),size = batch_size)
+    x_train = data_x[index], y_train = data_y[index]
     sess.run(train_op, feed_dict = {x: x_train, y: y_train})
     loss = sess.run(cost, feed_dict = {x: x_train, y: y_train})
     if i % 50 == 0:
-        print('Step #'+str(i)+'w = '+str(sess.run(w))+' b = '+str(sess.run(b))\
-              +' cost = '+str(loss))
+        print('Step #'+str(i)+'w = '+str(sess.run(w))+' b = '+str(sess.run(b)))
+        print(' cost = '+str(loss))
 
